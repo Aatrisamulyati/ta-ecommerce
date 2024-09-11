@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Pelanggan\LandingPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+/* 
+Route::group(['middleware' => ['auth']], function () {
+    
+
+});
+ */ 
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/', [LandingPageController::class, 'index'])->name('/');
