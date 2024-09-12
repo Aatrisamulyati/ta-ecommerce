@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Middleware\CekLevel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Pelanggan\LandingPageController;
 
@@ -18,12 +20,17 @@ use App\Http\Controllers\Pelanggan\LandingPageController;
 Route::get('/', function () {
     return view('welcome');
 });
-/* 
+
+//Auth
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+/*  
 Route::group(['middleware' => ['auth']], function () {
     
+}); */
 
-});
- */ 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/dashboard', [DashboardController::class, 'index']);    
 
 Route::get('/', [LandingPageController::class, 'index'])->name('/');
