@@ -4,6 +4,7 @@ use App\Http\Middleware\CekLevel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\DashboardAlumniController;
 use App\Http\Controllers\Pelanggan\LandingPageController;
 
 /*
@@ -34,3 +35,21 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/dashboard', [DashboardController::class, 'index']);    
 
 Route::get('/', [LandingPageController::class, 'index'])->name('/');
+
+// Admin dan Dokter
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::group(['middleware' => [CekLevel::class . ':Admin']], function () {
+        Route::resource('data-alumni', DashboardAlumniController::class);
+    });
+
+
+
+    Route::group(['middleware' => [CekLevel::class . ':Alumni']], function () {
+
+        
+    });
+
+    
+});
+

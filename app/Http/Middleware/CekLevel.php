@@ -24,6 +24,7 @@ class CekLevel
 
         // Ambil level pengguna
         $userLevel = Auth::user()->level;
+        $levels = ["Admin", "Alumni"];
 
         // Periksa apakah level pengguna ada dalam daftar yang diizinkan
         if (in_array($userLevel, $levels)) {

@@ -45,8 +45,13 @@
             </div> --}}
         
             @include('admin.layouts.navbar')
+
+            
             <!-- partial -->
+            
             @include('admin.layouts.sidebar')
+
+            @yield('content')
             <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->
