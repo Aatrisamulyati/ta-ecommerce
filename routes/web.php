@@ -3,8 +3,10 @@
 use App\Http\Middleware\CekLevel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login\LoginController;
+use App\Http\Controllers\Alumni\AlumniProdukController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\DashboardAlumniController;
+use App\Http\Controllers\Alumni\AlumniKategoriController;
 use App\Http\Controllers\Pelanggan\LandingPageController;
 
 /*
@@ -46,7 +48,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::group(['middleware' => [CekLevel::class . ':Alumni']], function () {
-
+        Route::resource('data-kategori', AlumniKategoriController::class);
+        Route::resource('data-produk', AlumniProdukController::class);
         
     });
 

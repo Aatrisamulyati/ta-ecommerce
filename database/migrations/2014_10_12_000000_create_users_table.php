@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('level');
             $table->string('alamat')->nullable();
             $table->string('telepon')->nullable();
-            $table->enum('status', ['active', 'inactive']);
+            $table->enum('status', ['Approve', 'Decline'])->default('Pending')->change();
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }
